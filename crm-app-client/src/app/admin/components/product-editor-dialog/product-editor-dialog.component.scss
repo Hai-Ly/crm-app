@@ -1,0 +1,26 @@
+.small-size {
+  width: 180px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+      display: none;
+  }
+}
+
+.field-group-child, .feature  {
+  padding-left: 20px;
+  // margin-bottom: 20px;
+  border-left: solid 4px rgba(0,0,0,.54);
+}
+
+label {
+  color: rgba(0,0,0,.54);
+}
+
+.crm-box-inner.categories {
+  height: 300px;
+  overflow: auto;
+}

@@ -1,0 +1,54 @@
+
+@import '../../../../styles/constants';
+
+$sidenav-width: 240px;
+
+.category-nav {
+  position: sticky;
+  top: 0;
+
+  .category-nav-content {
+    width: $sidenav-width;
+    max-height: 100vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+  }
+}
+
+@media (max-width: $small-breakpoint-width) {
+  // Add specific rule to prevent default rule conflict
+  .category-sidenav-container .category-sidenav {
+    // position right above the content
+    z-index: 4;
+  }
+
+  .category-nav {
+    position: relative;
+    top: 0;
+
+    .category-nav-content {
+      box-sizing: border-box;
+      margin: 0;
+      max-height: initial;
+    }
+  }
+}
+
+
+crm-category-nav {
+  width:240px;
+
+  .mat-tree {
+    background: none;
+  }
+
+  .mat-tree-node {
+    margin-bottom: 4px;
+    min-height : 0px;
+  }
+}
+

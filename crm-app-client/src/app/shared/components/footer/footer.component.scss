@@ -1,0 +1,84 @@
+:host {
+    padding: 12px;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+  
+  .crm-footer-list {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 8px;
+  }
+  
+  .crm-footer-logo {
+    flex: 1;
+  }
+  
+  .crm-footer-angular-logo {
+    height: 50px;
+  }
+  
+  .crm-footer-version {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  
+    .angular-material-logo {
+      height: 40px;
+      margin: 10px 0 10px 16px;
+    }
+    .version {
+      margin: 0 40px;
+    }
+  }
+  
+  .crm-footer-copyright {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    flex-direction: column;
+    min-width: 225px;
+    margin-top: 16px;
+  
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-end;
+      text-align: center;
+    }
+  
+    @media (min-width: 885px) {
+      margin-top: 0;
+    }
+  }
+  
+  .crm-footer-logo span {
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 40px;
+    vertical-align: bottom;
+  
+    a {
+      font-size: 16px;
+      padding: 0;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+  
+  @media screen and (max-width: 884px){
+    .crm-footer-list {
+      flex-direction: column;
+    }
+  }
+  

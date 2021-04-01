@@ -1,0 +1,46 @@
+// https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+
+/* You can add global styles to this file, and also import other style files */
+@import './app-theme';
+@import './styles/general';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@include mat-core();
+
+// Define the light theme.
+$primary: mat-palette($mat-yellow, 700, 500, 800 );
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+@include crm-app-theme($theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+//context menu
+.ngx-contextmenu .dropdown-menu {
+  border: solid 1px #666;
+  background-color: white;
+  padding: 0;
+}
+.ngx-contextmenu li {
+  display: block;
+  border-top: solid 1px #666;
+  text-transform: uppercase;
+  text-align: center;
+}
+.ngx-contextmenu li:first-child {
+  border-top:none;
+}
+.ngx-contextmenu a {
+  color:#666;
+  display: block;
+  padding: 0.5em 1em;
+}
+.ngx-contextmenu a:hover {
+  color:#111;
+  background-color:white;
+}

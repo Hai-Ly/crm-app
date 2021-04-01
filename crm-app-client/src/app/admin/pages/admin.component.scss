@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.section-tab {
+  text-transform: uppercase;
+}
+
+.tabbed-content {
+  margin-bottom: 25px;
+}
+
+.content {
+  position: relative;
+  min-height: 500px;
+  margin: 14px;
+}

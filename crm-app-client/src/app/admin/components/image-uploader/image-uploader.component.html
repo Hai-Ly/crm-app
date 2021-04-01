@@ -1,0 +1,10 @@
+<div fxLayout="row wrap" fxLayoutGap="14px 14px grid">
+  <div [fxFlex]="100/column" *ngFor="let fileUpload of fileUploads;let i = index" >
+      <crm-image-upload-item [status]="fileUpload" (deleted)="onDeleted(i)"></crm-image-upload-item>
+  </div>
+  <div *ngIf="!limit || fileUploads.length < limit" [fxFlex]="100/column">
+      <div class="add-button" >
+          <input type="file" accept=".png, .jpg, .jpeg" (change)="upload($event)" multiple>
+      </div>
+  </div>
+</div>

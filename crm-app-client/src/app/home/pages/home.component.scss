@@ -1,0 +1,106 @@
+@import '../../../styles/constants';
+
+crm-home {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.category-sidenav-container {
+  flex: 1;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.category-sidenav {
+  overflow: auto;
+}
+
+.category-sidenav-inner-content {
+  display: flex;
+  flex-direction: row;
+
+  // The rule will match the element following the router-outlet which will be the routed component.
+  router-outlet + * {
+    flex-grow: 1;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+.mat-drawer {
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+}
+
+
+
+.category-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.category-sidenav-inner-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  
+}
+
+.category-sidenav-body-content {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+
+@media (max-width: 720px) {
+  .category-sidenav-container {
+    flex: 1 0 auto;
+  }
+
+  .category-sidenav-body-content {
+    flex-direction: column;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $small-breakpoint-width) {
+    padding-left: 0;
+  }
+}
+
+h1 {
+  outline: none;
+
+  @media (max-width: $small-breakpoint-width) {
+    padding: 24px 8px;
+    font-size: 20px;
+  }
+}
+
+.sidenav-toggle {
+  padding: 0;
+  margin: 8px;
+  min-width: 64px;
+  display: none;
+
+  @media (max-width: $small-breakpoint-width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  mat-icon {
+    font-size: 30px;
+    height: 64px;
+    width: 64px;
+    line-height: 64px;
+    color: white;
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../../app-theme';
+
+table {
+    width: 100%;
+}
+
+@include mat-table-columns((
+    name: (width: 4rem),
+    duration: (width: 2rem),
+    recur: (width: 2rem),
+    numOfReg: (width: 2rem),
+    actions: (width: 48px)
+));
+
+.mat-column-actions {
+    width: 1px !important;
+    padding-left: 0px !important;
+
+    button {
+        width: auto;
+    }
+}
+
+td.mat-column-actions>div {
+    display: flex;
+}
+
+td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 48px;
+}

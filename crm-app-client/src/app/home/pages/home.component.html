@@ -1,0 +1,32 @@
+<mat-sidenav-container class="category-sidenav-container">
+    <!-- If on small screen, menu resides in drawer -->
+    <mat-sidenav #sidenav class="category-sidenav"
+        *ngIf="(isScreenSmall | async)"
+        [opened]="(isScreenSmall | async) === false"
+        [mode]="(isScreenSmall | async) ? 'over' : 'side'"
+        [fixedInViewport]="(isScreenSmall | async)"
+        [fixedTopGap]="56">
+        
+        <crm-category-nav></crm-category-nav>
+    
+    </mat-sidenav>
+    <div class="category-sidenav-content">
+
+        <div class="crm-primary-header header" *ngIf="(isScreenSmall | async)">
+            <button mat-button class="sidenav-toggle" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <h1 hgFocusOnNavigation> All </h1>
+        </div>
+
+        <div class="category-sidenav-inner-content">
+            <div class="category-sidenav-body-content crm-container">
+                <!-- If on large screen, menu resides to left of content -->
+                <crm-category-nav *ngIf="!(isScreenSmall | async)"></crm-category-nav>
+                <router-outlet></router-outlet>
+            </div>
+            <crm-footer></crm-footer>
+        </div>
+    </div>
+</mat-sidenav-container>

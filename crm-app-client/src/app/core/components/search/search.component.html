@@ -1,0 +1,32 @@
+
+<div class="search-container">
+  <div class="floated left">
+      <button mat-button class="scope-label" style="border-top-right-radius:0rem; border-bottom-right-radius:0rem;">
+          {{activeScopeLabel}} <mat-icon>arrow_drop_down</mat-icon>
+          <select (change)="onScopeChanged()" [(ngModel)]='activeScopeId'>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+          </select>
+      </button>
+  </div>
+
+  <div class="floated right">
+        <button mat-button class="crm-color-primary crm-background-primary" style="border-top-left-radius:0rem; border-bottom-left-radius:0rem;">
+          <mat-icon>search</mat-icon>
+        </button>
+  </div>
+
+  <ng-select #searchBox class="swl-search" 
+        [items]="(suggestions$ | async)!"
+        [loading]="suggestionLoading"
+        [typeahead]="termInput$"
+        [(ngModel)]="selectedSuggestion" 
+        [clearable]="false" 
+        [markFirst]="false"
+        bindLabel="term" 
+        
+        (change)="onSelect($event)" 
+        [openOnEnter]="false"
+        (keyup.enter)="onEnter()"
+        [clearSearchOnAdd]="false">
+  </ng-select>
+</div>

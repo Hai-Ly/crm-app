@@ -1,0 +1,56 @@
+
+<ng-container  *ngIf="product$|async as product">
+    <div class="crm-container">
+        <section class="row mat-typography crm-spacing-extra-large" >
+            <div class="column"> 
+              <crm-product-image-viewer style="display:inline-block; margin-right: 30px" [imageItems]="product.images" *ngIf="!introWithCarousel"></crm-product-image-viewer>
+              <crm-product-carousel [imageItems]="product.images" *ngIf="introWithCarousel"></crm-product-carousel>
+            </div>
+
+            <div class="column">
+              <h1>{{product.name}}</h1>
+              <mat-divider></mat-divider>
+              <div class="crm-color-secondary crm-spacing-small">
+                  Price: <span class="color-price mat-h2">đ{{product.price}}</span>
+              </div>
+              <ul class="unordered-list">
+                <li *ngFor="let feature of product.features">{{feature}}</li>
+              </ul>
+            </div>
+        </section>
+
+        <mat-divider class="crm-spacing-base"></mat-divider>
+          
+        <section class="mat-typography crm-spacing-extra-large">
+          <h2>Product description</h2>
+          <div class="product-description crm-spacing-small">{{product.description}}</div>
+        </section>
+
+  
+      <ng-container *ngIf="product.details && product.details.length > 0">
+        <mat-divider class="crm-spacing-base"></mat-divider>
+        <section class="mat-typography crm-spacing-extra-large">
+          <h2>Product details</h2>
+          <div class="product-details">
+            <mat-table [dataSource]="product.details" class="mat-elevation-z1">
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+              </ng-container>
+            
+              <!-- Value Column -->
+              <ng-container matColumnDef="value">
+                <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+              </ng-container>
+            
+              <mat-row *matRowDef="let row; columns: detailsColumns"></mat-row>
+            </mat-table>
+          </div>
+        </section>
+      </ng-container>
+  
+    </div>
+    <crm-footer></crm-footer>
+</ng-container>

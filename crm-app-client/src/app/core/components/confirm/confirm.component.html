@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{confirm.title}}</h2>
+<div class="ui section divider"></div>
+<mat-dialog-content>
+  <div>
+    {{confirm.content}}
+  </div>
+</mat-dialog-content>
+<div class="ui section divider"></div>
+<mat-dialog-actions align='end'>
+  <button class="ui button" (click)="onCancelClicked()" type ="button">Cancel</button>
+  <button class="ui button" (click)="onYesClicked()" type="button">Yes</button>
+</mat-dialog-actions>

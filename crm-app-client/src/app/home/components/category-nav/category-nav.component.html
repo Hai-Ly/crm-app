@@ -1,0 +1,21 @@
+<div class="category-nav">
+  <div class="category-nav-content">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [matTreeNodePaddingIndent]="12">
+        <!-- use a disabled button to provide padding for tree leaf -->
+      
+        <a class="crm-color-base" [routerLink]="['/products', node.id]">
+          <span>{{node.name}}</span>
+        </a>
+      </mat-tree-node>
+
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+        <a class="crm-color-base" [routerLink]="['/products', node.id]">
+          <span>{{node.name}}</span>
+        </a>
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+</div>

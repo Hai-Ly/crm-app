@@ -1,0 +1,29 @@
+<form class="signin-form" [formGroup]="signinForm">
+  <div class="crm-box">
+    <div class="crm-box-inner">
+      <h1>Sign-In</h1>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="f.email.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field> 
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
+          <mat-error *ngIf="f.password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div style="text-align: right">
+          <a [routerLink]="['/auth','forgotpwd']">Forgot your password?</a>
+        </div>
+        <button style="margin-top: 14px;" mat-raised-button (click)="login()" color="primary" [disabled]="signinForm.invalid">Continue</button>
+    
+    </div>
+  </div>
+</form>
+<div style="margin-top: 12px;"> New to? &nbsp; <a [routerLink]="['/auth','signup']">Create your account</a> </div>

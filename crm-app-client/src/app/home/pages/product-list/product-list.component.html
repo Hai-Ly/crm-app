@@ -1,0 +1,45 @@
+
+<ng-container *ngTemplateOutlet="(isScreenSmall$ | async)?listLayout:gridLayout;context:{items: products}">
+</ng-container>
+
+<ng-template #gridLayout let-items="items">
+  <mat-grid-list cols="4" rowHeight="2:3">
+    <mat-grid-tile *ngFor="let p of items;let i = index">
+      <div class="inner-tile">
+        <div class="body-tile">
+          
+        <div class="crm-spacing-medium">
+          <div style="height: 30px;"></div>
+          <a [routerLink]="['/products', p.id]">
+              <div class="crm-image-square">
+                <img [src]="p.thumbnail">
+              </div>
+          </a>
+          <div class="crm-spacing-top-small crm-line-clamp-4">
+            <a class="crm-color-base" [routerLink]="['/products', p.id]">
+              {{p.name}}
+            </a>
+          </div>
+          <div  class="crm-spacing-top-small">
+            <a class="crm-color-base" [routerLink]="['/products', p.id]">
+              <span class="crm-price">
+                <span class="crm-price-symbol">đ</span>
+                <span> {{p.price}}</span>
+                <span class="crm-price-symbol">000</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="paginator-container">
+    <crm-paginator [length]="nPages"></crm-paginator>
+  </div>
+</ng-template>
+
+<ng-template #listLayout let-items="items">
+  
+</ng-template>

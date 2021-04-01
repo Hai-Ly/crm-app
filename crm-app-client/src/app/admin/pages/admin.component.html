@@ -1,0 +1,19 @@
+
+<div class="crm-container ">
+
+  <div class="mat-typography s-spacing-extra-large">
+    <h2>Administrator</h2>
+  </div>
+
+  <nav mat-tab-nav-bar class="tabbed-content">
+    <a mat-tab-link
+        routerLink="products"
+        routerLinkActive #rla0="routerLinkActive"
+        [active]="rla0.isActive">PRODUCTS</a>
+  </nav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<crm-footer></crm-footer>

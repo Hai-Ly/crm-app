@@ -1,0 +1,65 @@
+.image-block {
+  padding-left: 43px;
+  .alt-images{
+    margin-left: -43px;
+    width: 40px;
+    float: left;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 10px 0px;
+        border-color: #a2a6ac;
+        border-radius: 2px;
+        cursor: pointer;
+        &.active{
+          border-color: 2px solid #e77600;
+          box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+        }
+
+        img {
+          max-width: 100%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .main-image {
+      display: inline-block;
+      position: relative;
+      margin: 0px 10px 0px;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+      }
+      
+      .magnifier-len {
+        display: none;
+        position: absolute;
+        background: url("./../../../../assets/img/magnifierLens.gif");  
+      }
+
+      &:hover {
+        .magnifier-len {
+          display: block;
+        }
+      }
+  }
+}
+
+
+.zoom-window{
+  overflow: hidden;
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 8px 2px;
+  border: 1px solid rgb(148, 148, 148);
+  img {
+    position: absolute;
+  }
+}

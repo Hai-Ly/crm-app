@@ -1,0 +1,108 @@
+<h1 mat-dialog-title>{{isCreateMode ? 'Create Course' : 'Update Course'}}</h1>
+<div mat-dialog-content style="overflow-y: scroll;">
+    <form [formGroup]="productForm">
+      <div fxLayout="column" fxLayoutGap="10px">
+        <mat-form-field fxFlex>
+          <mat-label>Name</mat-label>
+          <input matInput  placeholder="" formControlName="name" autocomplete="off" required>
+          <mat-error *ngIf="f.name.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div fxLayout>
+          <mat-form-field fxFlex="30">
+            <mat-label>Price</mat-label>
+            <input  matInput type="number" placeholder="" formControlName="price" required>
+            <span matSuffix>&nbsp;đ</span>
+            <mat-error *ngIf="f.price.hasError('required')">
+                Price is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <label>Categories</label>
+        <div fxFlex class="crm-box">
+          <div class="crm-box-inner categories">
+            <crm-product-category-select></crm-product-category-select>
+          </div>
+        </div>
+
+        <!--feature list-->
+
+        <label>Features</label>
+        <div formArrayName="features" fxLayout="column">
+          <div *ngFor="let feature of features.controls; let i=index">
+              <div class="feature" fxLayout fxLayoutGap="10px">
+                  <mat-form-field fxFlex="70">
+                    <input matInput type="text" placeholder="" [formControlName]="i">
+                  </mat-form-field>
+                  <div fxFlexAlign="center">
+                    <button class="small-icon-button" mat-icon-button aria-label="Delete the feature" type="button" (click)="deleteFeature(i)">
+                      <mat-icon>remove</mat-icon>
+                    </button>
+                  </div>
+                  <div  fxFlexAlign="center">
+                    <button class="small-icon-button" mat-icon-button aria-label="Edit the feature" type="button" (click)="addFeature(i)">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <label>Images</label>
+        <div fxFlex class="crm-box">
+          <div class="crm-box-inner">
+            
+            <crm-image-uploader [column]="4" [fileUploads]="images" [limit]="8" (event)="onImageUploadEvent($event)">
+            </crm-image-uploader>
+          </div>
+        </div>
+
+        <mat-form-field fxFlex>
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="" formControlName="description" rows="8" required></textarea>
+            <mat-error *ngIf="f.description.hasError('required')">
+                Description is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+      
+
+        <!--detail list-->
+        <label>Details</label>
+        
+        <div formArrayName="details" fxLayout="column">
+          <div class="field-group-child" fxLayout fxLayoutGap="10px" > 
+            <label fxFlex="40">Name</label>
+            <label fxFlex="40">Value</label>
+          </div>
+          <div *ngFor="let detail of details.controls; let i=index">
+            <div [formGroupName]="i" class="field-group-child" fxLayout fxLayoutGap="10px">
+                  <mat-form-field fxFlex="40">
+                    <input matInput type="text" placeholder="" formControlName="name">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="40">
+                    <input matInput type="text" placeholder="" formControlName="value">
+                  </mat-form-field>
+                  <div fxFlexAlign="center">
+                    <button class="small-icon-button" mat-icon-button aria-label="Delete the detail" type="button" (click)="deleteDetail(i)">
+                      <mat-icon>remove</mat-icon>
+                    </button>
+                  </div>
+                  <div  fxFlexAlign="center">
+                    <button class="small-icon-button" mat-icon-button aria-label="Edit the detail" type="button" (click)="addDetail(i)">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-raised-button style="margin-left: 8px;" (click)="onOkClicked()" [disabled]="productForm.invalid">{{isCreateMode ? 'Create' : 'Update'}}</button>
+    <button mat-raised-button (click)="onCancelClick()">Cancel</button>
+</div>

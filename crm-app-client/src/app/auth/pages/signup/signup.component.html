@@ -1,0 +1,44 @@
+<form class="signup-form" [formGroup]="signupForm">
+<div class="crm-box">
+  <div class="crm-box-inner">
+    <h1>Create account</h1>
+    
+      <mat-form-field>
+        <input  matInput  placeholder="Name" formControlName="name" required>
+        <mat-error *ngIf="f.name.hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput  placeholder="Email" formControlName="email" required>
+        <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="f.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput  placeholder="Password" formControlName="password" type="password" required>
+        <mat-error *ngIf="f.password.hasError('minlength') && !f.password.hasError('required')">
+          Password must be at least 8 characters long
+        </mat-error>
+        <mat-error *ngIf="f.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput  placeholder="Re-enter password" formControlName="confirmPassword" type="password" [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="signupForm.hasError('notSame') && !f.confirmPassword.hasError('required')">
+          Password do not match
+        </mat-error>
+        <mat-error *ngIf="f.confirmPassword.hasError('required')">
+          Re-enter password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button style="margin-top: 14px;" mat-raised-button (click)="register()" color="primary" [disabled]="signupForm.invalid">Create</button>
+  </div>
+</div>
+</form>
+<div style="margin-top: 12px;"> Already have an account?&nbsp; <a  [routerLink]="['/auth','signin']">Sign in</a></div>

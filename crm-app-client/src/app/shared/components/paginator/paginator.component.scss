@@ -1,0 +1,98 @@
+.pagnHy {
+  height: 36px;
+ 
+  text-align: center;
+  font-size: 16px;
+  
+  span {
+      line-height: 36px;
+      vertical-align: middle;
+  }
+  
+  .pagnLA {
+      margin-right: 35px;
+      padding: 0px;
+      a {
+          text-decoration: none;
+          color: #0066c0;
+          &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+              color: #c45500;
+              i {
+                  text-decoration: none;
+              }
+          }
+      }
+
+      &.disabled {
+          a {
+              color: #555;
+              pointer-events: none;
+          }  
+      }
+  }
+
+  .pagnRA {
+      margin-left: 35px;
+      padding: 0px;
+      a {
+          text-decoration: none;
+          color: #0066c0;
+          &:hover{
+              text-decoration: underline;
+              cursor: pointer;
+              color: #c45500;
+              i {
+                  text-decoration: none;
+              }
+          }
+      }
+
+      &.disabled {
+          a {
+              color: #555;
+              pointer-events: none;
+          }  
+      }
+  }
+
+  .pagnLink {
+      white-space: nowrap;
+      cursor: pointer;
+      a {
+          color: #0066c0;
+          padding: 6px 6px;
+          white-space: nowrap;
+          &:hover {
+              background: #FFF;
+              border: 1px solid #055D90;
+              color: #e47911;
+              padding: 5px;
+          }
+      }
+  }
+
+  .pagnCur {
+      font-weight: 700;
+      padding: 5px;
+      a {
+          color: #111;
+          pointer-events: none;
+      }
+      
+  }
+
+  .pagnMore {
+      a {
+          color: #111;
+          pointer-events: none;
+      }
+  }
+}
+
+.mat-paginator-icon {
+  width: 28px;
+  fill: currentColor;
+  vertical-align: middle;
+}

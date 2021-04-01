@@ -1,0 +1,24 @@
+<div class="pagnHy" *ngIf="length>1">
+    
+  <span class="pagnLA" [class.disabled]="curPage===1"> 
+      <a [routerLink]="['./']"  queryParamsHandling="merge" [queryParams]="{page: curPage-1}">
+        <span style="display: inline-flex;"><svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></span>
+        <span>Previous Page</span>
+      </a>
+  </span>
+
+  <span [class.pagnCur]="page===curPage"
+        [class.pagnLink]="page!==0 && page!==curPage"
+        [class.pagnMore]="page===0" *ngFor="let page of pages"
+        >
+      <a [routerLink]="['./']"  queryParamsHandling="merge" [queryParams]="{page: page}">{{page || '...'}}</a>
+  </span>
+
+  <span class="pagnRA" [class.disabled]="curPage===length">
+      <a [routerLink]="['./']"  queryParamsHandling="merge" [queryParams]="{page: curPage+1}">
+          <span>Next Page</span> 
+          <span style="display: inline-flex;"><svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></span>
+      </a>
+  </span>
+  
+</div>

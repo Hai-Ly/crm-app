@@ -1,0 +1,14 @@
+<ngu-carousel #myCarousel [inputs]="carouselTile" [dataSource]="imgs">
+  <ngu-tile *nguCarouselDef="let item; let i = index">
+    <img class="ui centered medium image" [src]="item">
+  </ngu-tile>
+  <!--
+  <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
+  <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
+  -->
+  <ul class="carousel-point-list" NguCarouselPoint>
+    <li *ngFor="let j of myCarousel.pointNumbers" [class.active]="j==myCarousel.activePoint" (click)="myCarousel.moveTo(j)"></li>
+  </ul>
+  
+</ngu-carousel>
+

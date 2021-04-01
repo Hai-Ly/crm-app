@@ -1,0 +1,52 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create new password</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="resetpwd-form" [formGroup]="resetPwdForm">
+      <div>We'll ask for this password whenever you sign in.</div>
+      <mat-form-field>
+        <input  matInput  placeholder="Password" formControlName="pwd" type="password" required>
+        <mat-error *ngIf="f.pwd.hasError('minlength') && !f.pwd.hasError('required')">
+          Password must be at least 8 characters long
+        </mat-error>
+        <mat-error *ngIf="f.pwd.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input  matInput placeholder="Re-enter password" formControlName="confirmPwd" type="password" [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="resetPwdForm.hasError('notSame') && !f.confirmPwd.hasError('required')">
+          Password do not match
+        </mat-error>
+        <mat-error *ngIf="f.confirmPwd.hasError('required')">
+          Re-enter password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <p>For your security, we need to verify your identity. We've sent a code to the email {{account.email}}. Please enter it below.</p>
+      <mat-form-field class="field" [class.error]="f.verifyCode.errors">
+        <input matInput placeholder="Enter code" type="text" formControlName="verifyCode">
+        <mat-error *ngIf="f.verifyCode.hasError('required')">
+          Please fill out this field
+        </mat-error>
+      </mat-form-field>
+      <a>Resend code</a> 
+      
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align='end'>
+    <button mat-raised-button (click)="resetPwd()" color="primary" [disabled]="resetPwdForm.invalid">Save Changes</button>
+  </mat-card-actions>
+</mat-card>
+
+<div>
+  Secure password tips:
+  Use at least 8 characters, a combination of numbers and letters is best.
+  Do not use the same password you have used with us previously.
+  Do not use dictionary words, your name, e-mail address, mobile phone number or other personal information that can be easily obtained.
+  Do not use the same password for multiple online accounts.
+</div> 

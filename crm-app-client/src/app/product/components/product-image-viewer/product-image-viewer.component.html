@@ -1,0 +1,35 @@
+
+  <div class="image-block">
+    <div class="alt-images">
+      <ul>
+        <li [class.active]="i === activeIndex" *ngFor="let item of imageItems; let i = index">
+          <img src="{{'../../../../../../assets/' + item.url['40']}}" (mouseover)="onActive(i)">
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-image" (mouseover)="startMagnifier($event)" (mousemove)="moveMagnifier($event)" (mouseout)="stopMagnifier()">
+      <img #mainImage src="{{ '../../../../../../assets/' + activeItem!.url['default']}}"  [srcset]="activeItem | imageurl2srcset" sizes="450px">
+      <div class="magnifier-len"
+            [style.width.px]="magnifierLen.width"
+            [style.height.px]="magnifierLen.height"
+            [style.left.px]="magnifierLen.x"
+            [style.top.px]="magnifierLen.y">
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom-window"
+      [style.visibility]="isDoMagnifier?'visible':'hidden'"
+      [style.width.px]="zoomWindow.width"
+      [style.height.px]="zoomWindow.height"
+      [style.left.px]="zoomWindow.x"
+      [style.top.px]="zoomWindow.y">
+
+      <img #largeImage src="{{'../../../../../../assets/' + activeItem!.url['default']}}"
+        [srcset]="activeItem | imageurl2srcset"
+        sizes="1500px"
+        [style.left.px]="zoomPos.x"
+        [style.top.px]="zoomPos.y">
+  </div>
+

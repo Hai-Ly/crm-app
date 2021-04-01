@@ -1,0 +1,18 @@
+<div class="upload-item">
+
+  <div class="image" *ngIf="isUploaded">
+      <img src="{{'assets/' + status.respone!.url.default}}" [srcset]="status.respone!.url| imageurl2srcset" sizes="150px">
+  </div>
+
+  <i *ngIf="isHighlighted && !isDeleting && !isUploading" class="delete red link icon" (click)="onDelete()"></i>
+
+  <div *ngIf= "isDeleting || (!isUploading && !isUploaded)" class="ui active inverted dimmer">
+    <div class="ui small loader"></div>
+  </div>
+
+</div>
+
+<div *ngIf="isUploading" class="ui bottom attached progress">
+  <div class="bar" [style.width.%]="status.progress"></div>
+</div>
+

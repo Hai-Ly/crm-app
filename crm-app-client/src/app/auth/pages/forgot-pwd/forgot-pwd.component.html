@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Password assistance</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="forgot-form" [formGroup]="forgotForm">
+      <div>Enter the email address associated with your account.</div>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="f.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align='end'>
+    <button mat-raised-button (click)="resetPwd()" color="primary" [disabled]="forgotForm.invalid">Continue</button>
+  </mat-card-actions>
+</mat-card>

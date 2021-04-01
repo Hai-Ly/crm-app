@@ -1,0 +1,93 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+:host > app-component-sidenav {
+  flex: 1;
+}
+
+:host > crm-homepage,
+:host > crm-product-detail{
+  overflow-y: auto;
+}
+
+@media (max-width: 720px) {
+  :host {
+    top: 92px;
+  }
+
+  :host >  crm-homepage,
+  :host > crm-product-detail {
+    overflow-y: visible;
+  }
+}
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  
+  > .mat-button {
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
+  
+.flex-spacer {
+  flex-grow: 1;
+}
+  
+.crm-logo {
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+}
+  
+.navbar-link {
+  text-decoration: inherit;
+  flex: 1;
+}
+  
+.navbar {
+  display: none;
+}
+  
+.navbar-show-small {
+  display: none;
+}
+  
+/**
+  * Rules for when the device is detected to be a small screen.
+  * Moves content two rows instead of one.
+  */
+@media (max-width: 720px) {
+  .navbar-hide-small {
+    display: none;
+  }
+  
+  .navbar-show-small {
+    display: block;
+  }
+  
+  .navbar {
+    display: flex;
+  }
+}
+  
