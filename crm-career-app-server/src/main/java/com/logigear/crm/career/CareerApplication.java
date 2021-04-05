@@ -8,9 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import com.logigear.crm.career.property.AppProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties({
-    AppProperties.class
-})
+@EnableConfigurationProperties(AppProperties.class)
 public class CareerApplication {
 	
 	public static void main(String[] args) {
